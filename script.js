@@ -43,7 +43,11 @@ function analyze() {
       reality: "Avoids seriousness."
     };
   }
-
+  document.getElementById("result").innerHTML = `
+    <h2>${persona.name}</h2>
+    <p><strong>Perception:</strong> ${persona.perception}</p>
+    <p><strong>Reality:</strong> ${persona.reality}</p>
+  `;
 
 }
 
