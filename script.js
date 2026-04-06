@@ -12,5 +12,14 @@ document.querySelectorAll(".tags span").forEach(tag => {
     }
   });
 });
+function analyze() {
+  const tags = Array.from(selected);
+
+  let persona = {
+    name: "Undefined Energy™",
+    perception: "Confusing but interesting.",
+    reality: "You’re still figuring things out."
+  };
+
 
 
