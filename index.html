@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Persona Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Internet Persona Generator</h1>
+
+    <div class="section">
+      <h3>Content Type</h3>
+      <div class="tags" id="content">
+        <span>productivity</span>
+        <span>gym</span>
+        <span>aesthetic</span>
+        <span>memes</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Posting Style</h3>
+      <div class="tags" id="style">
+        <span>consistent</span>
+        <span>random</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Tone</h3>
+      <div class="tags" id="tone">
+        <span>motivational</span>
+        <span>funny</span>
+        <span>deep</span>
+      </div>
+    </div>
+
+    <button onclick="analyze()">Analyze</button>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
