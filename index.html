@@ -363,6 +363,59 @@ const VIBES = {
     orb1: "#6c5ce7", orb2: "#a29bfe"
   }
 };
+const WMO_ICONS = {
+  0: "☀️", 1: "🌤️", 2: "⛅", 3: "☁️",
+  45: "🌫️", 48: "🌫️",
+  51: "🌦️", 53: "🌦️", 55: "🌧️",
+  61: "🌧️", 63: "🌧️", 65: "🌧️",
+  71: "🌨️", 73: "❄️", 75: "❄️",
+  77: "🌨️",
+  80: "🌦️", 81: "🌧️", 82: "⛈️",
+  85: "🌨️", 86: "❄️",
+  95: "⛈️", 96: "⛈️", 99: "⛈️"
+};
+
+const WMO_DESC = {
+  0: "clear sky", 1: "mainly clear", 2: "partly cloudy", 3: "overcast",
+  45: "foggy", 48: "icy fog",
+  51: "light drizzle", 53: "moderate drizzle", 55: "heavy drizzle",
+  61: "light rain", 63: "moderate rain", 65: "heavy rain",
+  71: "light snow", 73: "moderate snow", 75: "heavy snow",
+  77: "snow grains",
+  80: "light showers", 81: "moderate showers", 82: "heavy showers",
+  85: "light snow showers", 86: "heavy snow showers",
+  95: "thunderstorm", 96: "thunderstorm with hail", 99: "heavy thunderstorm"
+};
+
+function getVibeKey(wmo, temp) {
+  const isRain = [51,53,55,61,63,65,80,81,82].includes(wmo);
+  const isSnow = [71,73,75,77,85,86].includes(wmo);
+  const isStorm = [95,96,99].includes(wmo);
+  const isFog = [45,48].includes(wmo);
+  const isCloudy = [2,3].includes(wmo);
+  const isSunny = [0,1].includes(wmo);
+
+  if (isStorm) return "stormy";
+  if (isSnow) return "snowy";
+  if (isFog) return "foggy";
+  if (isRain) return temp > 18 ? "rainy_warm" : "rainy_cold";
+  if (isCloudy) return temp > 20 ? "cloudy_warm" : "cloudy_cool";
+  if (isSunny) {
+    if (temp > 30) return "sunny_hot";
+    if (temp > 20) return "sunny_warm";
+    return "sunny_cool";
+  }
+  return "default";
+}
+
+function setOrbs(orb1color, orb2color) {
+  const o1 = document.getElementById("orb1");
+  const o2 = document.getElementById("orb2");
+  o1.style.background = orb1color;
+  o1.style.opacity = "0.35";
+  o2.style.background = orb2color;
+  o2.style.opacity = "0.25";
+}
 
 
 
