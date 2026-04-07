@@ -464,5 +464,23 @@ async function getWeather() {
     document.getElementById("wind").textContent = `${wind} km/h`;
     document.getElementById("feels").textContent = `${feels}°`;
 
+    setOrbs(vibe.orb1, vibe.orb2);
+
+    hide("loading"); hide("error");
+    show("card");
+
+  } catch (e) {
+    hide("loading"); hide("card");
+    show("error");
+  }
+}
+
+// Enter key support
+document.getElementById("cityInput").addEventListener("keydown", e => {
+  if (e.key === "Enter") getWeather();
+});
+</script>
+</body>
+</html>
 
 
