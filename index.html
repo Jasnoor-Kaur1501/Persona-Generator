@@ -453,6 +453,16 @@ async function getWeather() {
     const vibeKey = getVibeKey(wmo, temp);
     const vibe = VIBES[vibeKey] || VIBES.default;
 
+    // Populate card
+    document.getElementById("cityLabel").textContent = `${name}, ${country}`;
+    document.getElementById("temp").textContent = `${temp}°`;
+    document.getElementById("icon").textContent = WMO_ICONS[wmo] || "🌡️";
+    document.getElementById("desc").textContent = WMO_DESC[wmo] || "unknown conditions";
+    document.getElementById("vibeTitle").textContent = vibe.title;
+    document.getElementById("vibeDesc").textContent = vibe.desc;
+    document.getElementById("humidity").textContent = `${humidity}%`;
+    document.getElementById("wind").textContent = `${wind} km/h`;
+    document.getElementById("feels").textContent = `${feels}°`;
 
 
 
