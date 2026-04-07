@@ -1,13 +1,13 @@
 #WeatherMood 🌤️
 Real-time weather with a personality.
-WeatherMood fetches live weather data for any city and translates it into a vibe — because "partly cloudy, 18°C" doesn't tell you how the day feels.
+WeatherMood fetches live weather data for any city and translates it into a vibe because "partly cloudy, 18°C" doesn't tell you how the day feels.
 Features
 
 Live weather data for any city worldwide
 Translates conditions into a distinct mood/vibe with personality
 Animated background orbs that shift based on weather
 Humidity, wind speed, and feels-like temperature
-Zero API key required — powered by Open-Meteo
+Zero API key required, powered by Open-Meteo
 
 Tech Stack
 HTML · CSS · JavaScript · Open-Meteo API · Open-Meteo Geocoding API
