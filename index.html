@@ -417,5 +417,42 @@ function setOrbs(orb1color, orb2color) {
   o2.style.opacity = "0.25";
 }
 
+function show(id) { document.getElementById(id).classList.add("visible"); }
+function hide(id) { document.getElementById(id).classList.remove("visible"); }
+
+async function getWeather() {
+  const city = document.getElementById("cityInput").value.trim();
+  if (!city) return;
+
+  hide("card"); hide("error");
+  show("loading");
+
+  try {
+    // Step 1: geocode city
+    const geoRes = await fetch(
+      `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=en&format=json`
+    );
+    const geoData = await geoRes.json();
+    if (!geoData.results || geoData.results.length === 0) throw new Error("City not found");
+
+    const { latitude, longitude, name, country } = geoData.results[0];
+
+    // Step 2: fetch weather
+    const wxRes = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code&wind_speed_unit=kmh&temperature_unit=celsius`
+    );
+    const wxData = await wxRes.json();
+    const cur = wxData.current;
+
+    const temp = Math.round(cur.temperature_2m);
+    const feels = Math.round(cur.apparent_temperature);
+    const humidity = cur.relative_humidity_2m;
+    const wind = Math.round(cur.wind_speed_10m);
+    const wmo = cur.weather_code;
+
+    const vibeKey = getVibeKey(wmo, temp);
+    const vibe = VIBES[vibeKey] || VIBES.default;
+
+
 
 
