@@ -1,4 +1,4 @@
-**#WeatherMood**
+# WeatherMood
 
 Day 01 of #21DaysOfVibeCode
 Real-time weather with a personality. Because "partly cloudy, 18°C" doesn't tell you how the day feels.
